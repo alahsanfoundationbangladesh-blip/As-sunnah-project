@@ -1,11 +1,15 @@
-import React, { useRef } from "react";
-import { IoPerson, IoMail, IoMenu } from "react-icons/io5";
+import { useRef } from "react";
+import { IoMail, IoMenu } from "react-icons/io5";
 import { FaFacebookF, FaYoutube } from "react-icons/fa6";
 import { FaPhoneAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { RxCross2 } from "react-icons/rx";
+import { usePublicSiteSettings, settingText } from "../lib/site-settings";
 export default function Topheader() {
   const navItem = useRef(null);
+  const { data: siteSettings } = usePublicSiteSettings();
+  const logoUrl = settingText(siteSettings?.logo_url, "/images/logo.png") || "/images/logo.png";
+  const siteName = settingText(siteSettings?.site_name, "As-Sunnah Foundation");
   const openMenu = () => {
     navItem.current.style.left = "0";
   };
@@ -43,8 +47,8 @@ export default function Topheader() {
         </div>
         <div className="secondSec">
           <div className="logo">
-          <Link to={"/"}> <img src="/images/logoTwo.png" alt="logo" id="logoTwo" />
-              <img src="/images/logo.png" alt="logo" id="logo" />
+          <Link to={"/"}> <img src={logoUrl} alt={siteName} id="logoTwo" />
+              <img src={logoUrl} alt={siteName} id="logo" />
             </Link>
           </div>
           <div className="topButton">

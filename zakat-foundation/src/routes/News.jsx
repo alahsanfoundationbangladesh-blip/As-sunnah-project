@@ -1,70 +1,35 @@
-import React from "react";
+import useSWR from "swr";
 import Topheader from "../components/Topheader";
 import { Link } from "react-router-dom";
+import { getPublishedContent } from "../lib/site-content";
 
 export default function News() {
-  let news = [
-    {
-      image: "/images/news/im1.png",
-      title:
-        "The first batch of the Smart Tailoring and Fashion Design course has been completed through the transfer of funds",
-      description:
-        "The Smart Tailoring and Fashion Designcourse conducted by As-Sunnah Skill Development Institute concluded its activities for the first batch. Within this project's scope, training was provided on tailoring, tie-dye, block -batik, hand embroidery, crafting, basic fashion design, and basic business developmen",
-    },
+  const { data: news = [], error, isLoading } = useSWR(
+    ["public-site-content", "news"],
+    () => getPublishedContent("news", 100),
+  );
 
-    {
-      image: "/images/news/im2.png",
-      title:
-        "The first batch of the Smart Tailoring and Fashion Design course has been completed through the transfer of funds",
-      description:
-        "The Smart Tailoring and Fashion Designcourse conducted by As-Sunnah Skill Development Institute concluded its activities for the first batch. Within this project's scope, training was provided on tailoring, tie-dye, block -batik, hand embroidery, crafting, basic fashion design, and basic business developmen",
-    },
-
-    {
-      image: "/images/news/im3.png",
-      title: "installation of water treatment plant in sarankhola,bagerthat",
-      description:
-        "The Smart Tailoring and Fashion Designcourse conducted by As-Sunnah Skill Development Institute concluded its activities for the first batch. Within this project's scope, training was provided on tailoring, tie-dye, block -batik, hand embroidery, crafting, basic fashion design, and basic business developmen",
-    },
-
-    {
-      image: "/images/news/im4.png",
-      title: "rice distribution project among helpless families 2023",
-      description:
-        "The Smart Tailoring and Fashion Designcourse conducted by As-Sunnah Skill Development Institute concluded its activities for the first batch. Within this project's scope, training was provided on tailoring, tie-dye, block -batik, hand embroidery, crafting, basic fashion design, and basic business developmen",
-    },
-
-    {
-      image: "/images/news/im5.png",
-      title: "meat distribution program among the poor",
-      description:
-        "The Smart Tailoring and Fashion Designcourse conducted by As-Sunnah Skill Development Institute concluded its activities for the first batch. Within this project's scope, training was provided on tailoring, tie-dye, block -batik, hand embroidery, crafting, basic fashion design, and basic business developmen",
-    },
-
-    {
-      image: "/images/news/im6.png",
-      title: "completion of one lakh tree paltion",
-      description:
-        "The Smart Tailoring and Fashion Designcourse conducted by As-Sunnah Skill Development Institute concluded its activities for the first batch. Within this project's scope, training was provided on tailoring, tie-dye, block -batik, hand embroidery, crafting, basic fashion design, and basic business developmen",
-    },
-  ];
   return (
     <>
       <Topheader />
-    <section className="mainNewsContainer">
-      <h1>News</h1>
-      <div className="newsContainer">
-        {news.map((e, index) => {
-          return (
-          <Link to={"/singlenews"}> <div key={index} className="cards">
-              <h2>{e.title}</h2>
-              <img src={e.image} alt={e.title} />
-              <p className="description">{e.description}</p>
-            </div></Link>
-          );
-        })}
-      </div>
-    </section>
+      <main className="mainNewsContainer">
+        <h1>News</h1>
+        {error && <p role="alert">News could not be loaded right now. Please try again later.</p>}
+        {isLoading ? <p role="status">Loading published news…</p> : (
+          <div className="newsContainer">
+            {news.map((item) => (
+              <Link key={item.id} to={`/singlenews?slug=${encodeURIComponent(item.slug)}`}>
+                <article className="cards">
+                  <h2>{item.title}</h2>
+                  {item.image_url && <img src={item.image_url} alt={item.title} loading="lazy" />}
+                  <p className="description">{item.summary || item.body}</p>
+                </article>
+              </Link>
+            ))}
+            {!error && news.length === 0 && <p>No news articles have been published yet.</p>}
+          </div>
+        )}
+      </main>
     </>
   );
 }

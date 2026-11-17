@@ -96,9 +96,11 @@
 // }
 
 // export default App;
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import Footer from "./components/Footer";
+import SiteRuntime from "./components/SiteRuntime";
+import AdminApp from "./admin/AdminApp";
+import AdminAuthCallback from "./admin/AdminAuthCallback";
 import Root from "./routes/root";
 import About from "./routes/About";
 import Project from "./routes/Project";
@@ -116,11 +118,20 @@ import ZakatCal from "./routes/donationpart/ZakatCal";
 import TermConditions from "./routes/donationpart/TermConditions";
 import Privacy from "./routes/donationpart/Privacy";
 import NewsSinglepage from "./routes/NewsSinglepage";
+import ContentDetail from "./routes/ContentDetail";
 
-function App () {
+function AppRoutes() {
+  const { pathname } = useLocation();
+  const isPrivateRoute = pathname.startsWith("/admin") || pathname.startsWith("/auth");
+
   return (
-    <Router>
+    <>
+      <SiteRuntime />
       <Routes>
+        <Route path="/admin/*" element={<AdminApp />} />
+        <Route path="/auth/callback" element={<AdminAuthCallback />} />
+        <Route path="/articles/:slug" element={<ContentDetail contentType="article" />} />
+        <Route path="/pages/:slug" element={<ContentDetail contentType="page" />} />
         <Route path="/" element={<Root />} />
         <Route path="/about" element={<About />} />
         <Route path="/project" element={<Project />} />
@@ -139,7 +150,15 @@ function App () {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/singlenews" element={<NewsSinglepage />} />
       </Routes>
-      <Footer />
+      {!isPrivateRoute && <Footer />}
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppRoutes />
     </Router>
   );
 }

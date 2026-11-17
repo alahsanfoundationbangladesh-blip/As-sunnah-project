@@ -5,6 +5,10 @@
   font-family: sans-serif;
 }
 
+:root {
+  --brand-green: var(--brand-green, #368547);
+}
+
 html {
   font-size: 62.5%;
 }
@@ -95,7 +99,7 @@ section.mainTopHeader .secondSec .topButton button {
   border: none;
   cursor: pointer;
   color: #ffffff;
-  background: #368547;
+  background: var(--brand-green, #368547);
   font-weight: bold;
 }
 
@@ -180,7 +184,7 @@ header .donateForm form select {
 
 header .donateForm form button {
   height: 4rem;
-  background: #368547;
+  background: var(--brand-green, #368547);
   padding: 1rem 2rem;
   border: none;
   border-radius: 1rem;
@@ -223,7 +227,7 @@ section.foundation .desc h1 {
   font-size: 2.5rem;
 
   font-weight: 400;
-  color: #368547;
+  color: var(--brand-green, #368547);
   position: relative;
 }
 
@@ -259,13 +263,13 @@ section.foundation .desc .otherSec ul li {
 
 section.foundation .desc .otherSec ul li a {
   font-weight: bold;
-  color: #368547;
+  color: var(--brand-green, #368547);
   text-decoration: none;
 }
 
 section.foundation .desc .otherSec ul li span {
   font-size: 2rem;
-  color: #368547;
+  color: var(--brand-green, #368547);
   margin-right: 2rem;
   position: relative;
 }
@@ -292,7 +296,7 @@ section.cardSection .moreBtn {
 section.cardSection .moreBtn button {
   padding: 1rem 2rem;
   height: 4rem;
-  background: #368547;
+  background: var(--brand-green, #368547);
   border: none;
   cursor: pointer;
   font-size: 1.5rem;
@@ -318,7 +322,7 @@ section.cardSection h1 {
   margin: 4rem 0 0 0;
   font-size: 2.5rem;
 
-  color: #368547;
+  color: var(--brand-green, #368547);
 }
 
 section.cardSection .mainCardSec .cards {
@@ -338,7 +342,7 @@ section.cardSection .mainCardSec .cards h3 {
   margin: 1rem;
   font-size: 2rem;
 
-  color: #368547;
+  color: var(--brand-green, #368547);
 }
 
 section.cardSection .mainCardSec .cards p {
@@ -358,7 +362,7 @@ section.cardSection .mainCardSec .cards button {
   border-radius: 0.8rem;
   border: none;
   color: #ffffff;
-  background: #368547;
+  background: var(--brand-green, #368547);
   cursor: pointer;
 }
 
@@ -375,7 +379,7 @@ section.ongoingProject h1 {
   margin: 4rem 0 0 0;
   font-size: 2.5rem;
 
-  color: #368547;
+  color: var(--brand-green, #368547);
 }
 
 section.ongoingProject .mainCard {
@@ -407,7 +411,7 @@ section.ongoingProject .moreBtn {
 section.ongoingProject .moreBtn button {
   padding: 1rem 2rem;
   height: 4rem;
-  background: #368547;
+  background: var(--brand-green, #368547);
   border: none;
   cursor: pointer;
   font-size: 1.5rem;
@@ -422,7 +426,7 @@ section.ongoingProject .mainCard .card h3 {
   margin: 1rem;
   font-size: 2rem;
 
-  color: #368547;
+  color: var(--brand-green, #368547);
 }
 
 section.ongoingProject .mainCard .card p {
@@ -445,7 +449,7 @@ section.latestNews h1 {
   margin: 4rem 0 0 0;
   font-size: 2.5rem;
 
-  color: #368547;
+  color: var(--brand-green, #368547);
 }
 
 section.latestNews .mainCard {
@@ -482,7 +486,7 @@ section.latestNews .moreBtn {
 section.latestNews .moreBtn button {
   padding: 1rem 2rem;
   height: 4rem;
-  background: #368547;
+  background: var(--brand-green, #368547);
   border: none;
   cursor: pointer;
   font-size: 1.5rem;
@@ -505,7 +509,7 @@ section.project h1 {
   margin: 4rem 0 0 0;
   font-size: 2.5rem;
 
-  color: #368547;
+  color: var(--brand-green, #368547);
 }
 
 section.project .projectCard {
@@ -564,7 +568,7 @@ section.project .moreBtn {
 section.project .moreBtn button {
   padding: 1rem 2rem;
   height: 4rem;
-  background: #368547;
+  background: var(--brand-green, #368547);
   border: none;
   cursor: pointer;
   font-size: 1.5rem;
@@ -582,7 +586,7 @@ section.latestVideos .moreBtn {
 section.latestVideos .moreBtn button {
   padding: 1rem 2rem;
   height: 4rem;
-  background: #368547;
+  background: var(--brand-green, #368547);
   border: none;
   cursor: pointer;
   font-size: 1.5rem;
@@ -606,7 +610,7 @@ section.latestVideos h1 {
   margin: 4rem 0 0 0;
   font-size: 2.5rem;
 
-  color: #368547;
+  color: var(--brand-green, #368547);
 }
 
 section.latestVideos .mainVideoSection {
@@ -635,7 +639,7 @@ section.mainGallery .moreBtn {
 section.mainGallery .moreBtn button {
   padding: 1rem 2rem;
   height: 4rem;
-  background: #368547;
+  background: var(--brand-green, #368547);
   border: none;
   cursor: pointer;
   font-size: 1.5rem;
@@ -658,7 +662,7 @@ section.mainGallery h1 {
   margin: 4rem 0 0 0;
   font-size: 2.5rem;
 
-  color: #368547;
+  color: var(--brand-green, #368547);
 }
 
 section.mainGallery .mainCard {
@@ -677,7 +681,7 @@ section.mainSecDonor {
 }
 
 section.mainSecDonor h1 {
-  background: #368547;
+  background: var(--brand-green, #368547);
   ;
   color: #ffffff;
   padding: 2rem;
@@ -721,7 +725,7 @@ section.mainSecDonor .mainFlexDisplay .secondSection .firstItemDiv .itemDiv h2 {
   text-align: center;
   margin: 2rem;
 
-  color: #368547;
+  color: var(--brand-green, #368547);
 }
 
 section.mainSecDonor .mainFlexDisplay .secondSection .firstItemDiv .itemDiv p {
@@ -745,14 +749,14 @@ section.mainSecDonor .mainFlexDisplay .secondSection .firstItemDiv .itemDiv ul l
 section.mainSecDonor .mainFlexDisplay .secondSection .firstItemDiv .itemDiv ul li span {
   font-size: 1.8rem;
   margin-right: 1.5rem;
-  color: #368547;
+  color: var(--brand-green, #368547);
 }
 
 section.mainSecDonor .mainFlexDisplay .secondSection .firstItemDiv .itemDiv h3 {
   font-size: 1.6rem;
 
   margin: 2rem 0 4rem 0;
-  color: #368547;
+  color: var(--brand-green, #368547);
 }
 
 section.mainSecDonor .mainFlexDisplay .secondSection .secondItemDiv {
@@ -767,7 +771,7 @@ section.mainSecDonor .mainFlexDisplay .secondSection .secondItemDiv h2 {
   text-align: center;
   font-size: 2rem;
 
-  color: #368547;
+  color: var(--brand-green, #368547);
 }
 
 section.mainSecDonor .mainFlexDisplay .firstSection .secondCard {
@@ -782,7 +786,7 @@ section.mainSecDonor .mainFlexDisplay .firstSection .secondCard h2 {
   font-size: 1.7rem;
   text-align: center;
 
-  color: #368547;
+  color: var(--brand-green, #368547);
 }
 
 section.mainSecDonor .mainFlexDisplay .secondSection .secondItemDiv form .inputDiv {
@@ -810,7 +814,7 @@ section.mainSecDonor .mainFlexDisplay .secondSection .secondItemDiv .note h3 {
   text-align: center;
   font-size: 1.8rem;
 
-  color: #368547;
+  color: var(--brand-green, #368547);
 }
 
 section.mainSecDonor .mainFlexDisplay .secondSection .secondItemDiv .note p {
@@ -828,7 +832,7 @@ section.mainSecDonor .mainFlexDisplay .secondSection .secondItemDiv button {
   border-radius: 1.5rem;
   font-weight: bold;
   cursor: pointer;
-  background: #368547;
+  background: var(--brand-green, #368547);
   color: #ffffff;
 }
 
@@ -854,14 +858,14 @@ section.mainSecDonor .mainFlexDisplay .firstSection .secondCard ul li {
 section.mainSecDonor .mainFlexDisplay .firstSection .secondCard ul li span {
   font-size: 2rem;
   margin-right: 1rem;
-  color: #368547;
+  color: var(--brand-green, #368547);
 }
 
 section.mainSecDonor .mainFlexDisplay .firstSection .secondCard ul li h5 {
   position: absolute;
   height: 1.8rem;
   width: 0.1rem;
-  background: #368547;
+  background: var(--brand-green, #368547);
   left: 0.95rem;
   top: -1.6rem;
 }
@@ -874,7 +878,7 @@ section.teams h1 {
   text-align: center;
   font-size: 2.5rem;
   margin: 3rem;
-  color: #368547;
+  color: var(--brand-green, #368547);
 }
 
 section.teams .mainTeamCard {
@@ -896,7 +900,7 @@ section.teams .mainTeamCard .cards img {
 
 section.teams .mainTeamCard .cards h2 {
   text-align: center;
-  color: #368547;
+  color: var(--brand-green, #368547);
 
   margin-top: 1rem;
   text-transform: capitalize;
@@ -906,7 +910,7 @@ section.allVideo h1 {
   font-size: 3rem;
   text-align: center;
   width: 100%;
-  background: #368547;
+  background: var(--brand-green, #368547);
   ;
   color: #ffffff;
 
@@ -935,7 +939,7 @@ section.contactUs h1 {
   font-size: 3rem;
   padding: 2rem;
   width: 100%;
-  background: #368547;
+  background: var(--brand-green, #368547);
   ;
   color: #ffffff;
   text-align: center;
@@ -962,7 +966,7 @@ section.contactUs .contactMainFlexDisplay .flexOne {
 section.contactUs .contactMainFlexDisplay .flexOne h2 {
   margin: 2rem;
   font-size: 2rem;
-  color: #368547;
+  color: var(--brand-green, #368547);
 }
 
 section.contactUs .contactMainFlexDisplay .flexOne form .form-group {
@@ -991,7 +995,7 @@ section.contactUs .contactMainFlexDisplay .flexOne form button {
   border: none;
   height: 4rem;
   margin-top: 2rem;
-  background: #368547;
+  background: var(--brand-green, #368547);
   color: #ffffff;
   font-weight: bold;
 }
@@ -1015,7 +1019,7 @@ section.contactUs .contactMainFlexDisplay .flexTwo .map {
 
 section.contactUs .contactMainFlexDisplay .flexTwo .map h2 {
   font-size: 2rem;
-  color: #368547;
+  color: var(--brand-green, #368547);
   margin-bottom: 1rem;
 }
 
@@ -1035,13 +1039,13 @@ section.contactUs .contactMainFlexDisplay .flexTwo .contactDetail {
 
 section.contactUs .contactMainFlexDisplay .flexTwo .contactDetail h2 {
   font-size: 2rem;
-  color: #368547;
+  color: var(--brand-green, #368547);
   margin: 1rem 0;
 }
 
 section.contactUs .contactMainFlexDisplay .flexTwo .contactDetail h3 {
   font-size: 1.5rem;
-  color: #368547;
+  color: var(--brand-green, #368547);
   font-weight: 400;
   margin: 1rem 0 0.5rem 0;
 }
@@ -1051,7 +1055,7 @@ section.volreg h1 {
   text-align: center;
   padding: 2rem;
   color: #ffffff;
-  background: #368547;
+  background: var(--brand-green, #368547);
   ;
 }
 
@@ -1072,7 +1076,7 @@ section.volreg .formSection form button {
   color: #ffffff;
   border: none;
   border-radius: 0.5rem;
-  background: #368547;
+  background: var(--brand-green, #368547);
   font-weight: bold;
   cursor: pointer;
   margin-top: 4rem;
@@ -1142,7 +1146,7 @@ section.mainNewsContainer h1 {
   text-align: center;
   padding: 2rem;
   color: #ffffff;
-  background: #368547;
+  background: var(--brand-green, #368547);
   ;
 }
 
@@ -1184,7 +1188,7 @@ section.mainGalleryContainer h1 {
   text-align: center;
   padding: 2rem;
   color: #ffffff;
-  background: #368547;
+  background: var(--brand-green, #368547);
   ;
 }
 
@@ -1235,7 +1239,7 @@ section.aboutSection h1 {
   text-align: center;
   padding: 2rem;
   color: #ffffff;
-  background: #368547;
+  background: var(--brand-green, #368547);
   ;
 }
 
@@ -1264,7 +1268,7 @@ section.aboutSection .aboutContainer .secondContainer .box {
 section.aboutSection .aboutContainer .secondContainer .box h2 {
   font-size: 2rem;
   margin: 1.5rem 0;
-  color: #368547;
+  color: var(--brand-green, #368547);
 }
 
 section.aboutSection .aboutContainer .secondContainer .box p {
@@ -1286,7 +1290,7 @@ section.aboutSection .aboutContainer .secondContainer .box ul li {
 
 section.aboutSection .aboutContainer .secondContainer .box ul li span {
   margin-right: 1.5rem;
-  color: #368547;
+  color: var(--brand-green, #368547);
   font-size: 1.7rem;
 }
 
@@ -1309,7 +1313,7 @@ section.projectContainer h1 {
   text-align: center;
   padding: 2rem;
   color: #ffffff;
-  background: #368547;
+  background: var(--brand-green, #368547);
   ;
 }
 
@@ -1365,13 +1369,13 @@ section.projectContainer .projectFlexContainer .secondContainer .items ul li {
 
 section.projectContainer .projectFlexContainer .secondContainer .items ul li span {
   margin-right: 1rem;
-  color: #368547;
+  color: var(--brand-green, #368547);
   font-size: 1.7rem;
 }
 
 section.projectContainer .projectFlexContainer .secondContainer .items h2 {
   font-size: 2rem;
-  color: #368547;
+  color: var(--brand-green, #368547);
   margin: 1rem 0;
 }
 
@@ -1398,7 +1402,7 @@ footer p {
 
 footer a {
   font-weight: bold;
-  color: #368547;
+  color: var(--brand-green, #368547);
   font-size: 15px;
   text-decoration: none;
 }
@@ -1468,7 +1472,7 @@ footer a {
   nav ul {
     position: absolute;
     height: 75rem;
-    color: #368547;
+    color: var(--brand-green, #368547);
     /* border: 1px solid green; */
     flex-direction: column;
     background-color: white;
@@ -1897,7 +1901,7 @@ font-size: 30px;
   align-items: center;
   justify-content: center;
 
-  background: #368547;
+  background: var(--brand-green, #368547);
 }
 
 .heading h1 {
@@ -2141,7 +2145,7 @@ font-size: 30px;
 }
 
 .bank_title_part_two button:hover {
-  background-color: #368547;
+  background-color: var(--brand-green, #368547);
   cursor: pointer;
 }
 
@@ -2178,7 +2182,7 @@ font-size: 30px;
 }
 
 .amount_btn_div button:hover {
-  background-color: #368547;
+  background-color: var(--brand-green, #368547);
   cursor: pointer;
 }
 
