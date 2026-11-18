@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import Topheader from "../components/Topheader";
 import ModalImage from "react-modal-image";
@@ -11,7 +11,7 @@ export default function Gallery() {
     <>
       <Topheader />
       <section className="mainGalleryContainer">
-        <h1>Gallery</h1>
+        <h1>ছবির গ্যালারি</h1>
         <div className="galContainerBox">
           <div className="firstGalarySec">
             <ul>
@@ -30,7 +30,7 @@ export default function Gallery() {
                 }}
                 className="oneGal"
               >
-                Iftar Distribution
+                ইফতার বিতরণ
               </li>
               <li
                 style={
@@ -47,7 +47,7 @@ export default function Gallery() {
                 }}
                 className="twoGal"
               >
-                Orphan
+                এতিম শিশুদের সহায়তা
               </li>
               <li
                 style={
@@ -64,7 +64,7 @@ export default function Gallery() {
                 }}
                 className="threeGal"
               >
-                Qurbani
+                কুরবানি
               </li>
               <li
                 style={
@@ -81,7 +81,7 @@ export default function Gallery() {
                 }}
                 className="fourGal"
               >
-                Food Distribution
+                খাদ্য বিতরণ
               </li>
               <li
                 style={
@@ -98,7 +98,7 @@ export default function Gallery() {
                 }}
                 className="fiveGal"
               >
-                Tube well Distribution
+                নলকূপ বিতরণ
               </li>
               <li
                 style={
@@ -115,7 +115,7 @@ export default function Gallery() {
                 }}
                 className="sixGal"
               >
-                Relief distribution
+                ত্রাণ বিতরণ
               </li>
               <li
                 style={
@@ -132,7 +132,7 @@ export default function Gallery() {
                 }}
                 className="sevenGal"
               >
-                Van Distribution
+                ভ্যান বিতরণ
               </li>
               <li
                 style={
@@ -149,7 +149,7 @@ export default function Gallery() {
                 }}
                 className="eightGal"
               >
-                Winter Clothing
+                শীতবস্ত্র বিতরণ
               </li>
             </ul>
           </div>
@@ -160,37 +160,37 @@ export default function Gallery() {
                   <ModalImage
                     small={"/images/gallery/one/img1.png"}
                     large={"/images/gallery/one/img1.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/one/img2.png"}
                     large={"/images/gallery/one/img2.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/one/img3.png"}
                     large={"/images/gallery/one/img3.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/one/img4.png"}
                     large={"/images/gallery/one/img4.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/one/img5.png"}
                     large={"/images/gallery/one/img5.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/one/img6.png"}
                     large={"/images/gallery/one/img6.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/one/img7.png"}
                     large={"/images/gallery/one/img7.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                 </div>
               ) : nav === 2 ? (
@@ -198,12 +198,12 @@ export default function Gallery() {
                   <ModalImage
                     small={"/images/gallery/two/img1.png"}
                     large={"/images/gallery/two/img1.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/two/img2.png"}
                     large={"/images/gallery/two/img2.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                 </div>
               ) : nav === 3 ? (
@@ -211,27 +211,27 @@ export default function Gallery() {
                   <ModalImage
                     small={"/images/gallery/three/img1.png"}
                     large={"/images/gallery/three/img1.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/three/img2.png"}
                     large={"/images/gallery/three/img2.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/three/img3.png"}
                     large={"/images/gallery/three/img3.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/three/img4.png"}
                     large={"/images/gallery/three/img4.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/three/img5.png"}
                     large={"/images/gallery/three/img5.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                 </div>
               ) : nav === 4 ? (
@@ -239,27 +239,27 @@ export default function Gallery() {
                   <ModalImage
                     small={"/images/gallery/four/img1.png"}
                     large={"/images/gallery/four/img1.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/four/img2.png"}
                     large={"/images/gallery/four/img2.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/four/img3.png"}
                     large={"/images/gallery/four/img3.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/four/img4.png"}
                     large={"/images/gallery/four/img4.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/four/img5.png"}
                     large={"/images/gallery/four/img5.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                 </div>
               ) : nav === 5 ? (
@@ -267,22 +267,22 @@ export default function Gallery() {
                   <ModalImage
                     small={"/images/gallery/five/img1.png"}
                     large={"/images/gallery/five/img1.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/five/img2.png"}
                     large={"/images/gallery/five/img2.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/five/img3.png"}
                     large={"/images/gallery/five/img3.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/five/img4.png"}
                     large={"/images/gallery/five/img4.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                 </div>
               ) : nav === 6 ? (
@@ -290,32 +290,32 @@ export default function Gallery() {
                   <ModalImage
                     small={"/images/gallery/six/img1.png"}
                     large={"/images/gallery/six/img1.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/six/img2.png"}
                     large={"/images/gallery/six/img2.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/six/img3.png"}
                     large={"/images/gallery/six/img3.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/six/img4.png"}
                     large={"/images/gallery/six/img4.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/six/img5.png"}
                     large={"/images/gallery/six/img5.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/six/img6.png"}
                     large={"/images/gallery/six/img6.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                 </div>
               ) : nav === 7 ? (
@@ -323,22 +323,22 @@ export default function Gallery() {
                   <ModalImage
                     small={"/images/gallery/seven/img1.png"}
                     large={"/images/gallery/seven/img1.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/seven/img2.png"}
                     large={"/images/gallery/seven/img2.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/seven/img3.png"}
                     large={"/images/gallery/seven/img3.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/seven/img4.png"}
                     large={"/images/gallery/seven/img4.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                 </div>
               ) : (
@@ -346,57 +346,57 @@ export default function Gallery() {
                   <ModalImage
                     small={"/images/gallery/eight/img1.png"}
                     large={"/images/gallery/eight/img1.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/eight/img2.png"}
                     large={"/images/gallery/eight/img2.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/eight/img3.png"}
                     large={"/images/gallery/eight/img3.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/eight/img4.png"}
                     large={"/images/gallery/eight/img4.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/eight/img5.png"}
                     large={"/images/gallery/eight/img5.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/eight/img6.png"}
                     large={"/images/gallery/eight/img6.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/eight/img7.png"}
                     large={"/images/gallery/eight/img7.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/eight/img8.png"}
                     large={"/images/gallery/eight/img8.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/eight/img9.png"}
                     large={"/images/gallery/eight/img9.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/eight/img10.png"}
                     large={"/images/gallery/eight/img10.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                   <ModalImage
                     small={"/images/gallery/eight/img11.png"}
                     large={"/images/gallery/eight/img11.png"}
-                    alt="Image preview"
+                    alt="ছবির বড় দৃশ্য"
                   />
                 </div>
               )}

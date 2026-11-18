@@ -22,8 +22,8 @@ function getFileIcon(type) {
 }
 
 function formatSize(bytes) {
-  if (bytes < 1024 * 1024) return `${Math.max(1, Math.round(bytes / 1024))} KB`;
-  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+  if (bytes < 1024 * 1024) return `${new Intl.NumberFormat("bn-BD").format(Math.max(1, Math.round(bytes / 1024)))} কেবি`;
+  return `${new Intl.NumberFormat("bn-BD", { minimumFractionDigits: 1, maximumFractionDigits: 1 }).format(bytes / (1024 * 1024))} এমবি`;
 }
 
 export default function MediaLibrary({ onNotice, user }) {
@@ -39,11 +39,11 @@ export default function MediaLibrary({ onNotice, user }) {
     setErrorMessage("");
 
     if (file.size > MEDIA_LIMIT) {
-      setErrorMessage("Files must be 20 MB or smaller.");
+      setErrorMessage("ফাইলের আকার ২০ এমবি বা তার কম হতে হবে।");
       return;
     }
     if (!file.type || !(file.type.startsWith("image/") || file.type.startsWith("video/") || file.type === "application/pdf" || file.type.includes("wordprocessingml"))) {
-      setErrorMessage("Upload an image, video, PDF or Word document.");
+      setErrorMessage("ছবি, ভিডিও, PDF অথবা Word নথি আপলোড করুন।");
       return;
     }
 
@@ -57,7 +57,7 @@ export default function MediaLibrary({ onNotice, user }) {
     });
 
     if (uploadError) {
-      setErrorMessage("Upload failed. Check your media permission and file type, then try again.");
+      setErrorMessage("আপলোড করা যায়নি। মিডিয়া ব্যবহারের অনুমতি ও ফাইলের ধরন যাচাই করে আবার চেষ্টা করুন।");
       setUploading(false);
       return;
     }
@@ -73,60 +73,60 @@ export default function MediaLibrary({ onNotice, user }) {
 
     if (recordError) {
       await supabase.storage.from("foundation-media").remove([storagePath]);
-      setErrorMessage("The file was uploaded but its library record could not be saved. Check your media permission.");
+      setErrorMessage("ফাইল আপলোড হয়েছে, কিন্তু লাইব্রেরিতে সংরক্ষণ করা যায়নি। মিডিয়া ব্যবহারের অনুমতি যাচাই করুন।");
       setUploading(false);
       return;
     }
 
     await mutate("admin-media-assets");
     setUploading(false);
-    onNotice("Media uploaded to the protected foundation library.");
+    onNotice("ফাইলটি ফাউন্ডেশনের সুরক্ষিত মিডিয়া লাইব্রেরিতে আপলোড হয়েছে।");
   };
 
   const deleteAsset = async (asset) => {
-    if (!window.confirm(`Remove “${asset.file_name}” from the media library?`)) return;
+    if (!window.confirm(`“${asset.file_name}” মিডিয়া লাইব্রেরি থেকে সরাতে চান?`)) return;
     const { error: removeError } = await supabase.storage.from("foundation-media").remove([asset.storage_path]);
     if (removeError) {
-      onNotice("The file could not be removed from storage. Check your media permission.");
+      onNotice("স্টোরেজ থেকে ফাইলটি সরানো যায়নি। মিডিয়া ব্যবহারের অনুমতি যাচাই করুন।");
       return;
     }
     const { error: recordError } = await supabase.from("media_assets").delete().eq("id", asset.id);
     if (recordError) {
-      onNotice("The file was removed, but the media record could not be deleted. Refresh and try again.");
+      onNotice("ফাইল সরানো হয়েছে, তবে লাইব্রেরির রেকর্ড মুছতে সমস্যা হয়েছে। রিফ্রেশ করে আবার চেষ্টা করুন।");
       await mutate("admin-media-assets");
       return;
     }
     await mutate("admin-media-assets");
-    onNotice("Media removed from storage and the library.");
+    onNotice("স্টোরেজ ও মিডিয়া লাইব্রেরি থেকে ফাইলটি সরানো হয়েছে।");
   };
 
   return (
     <section className="admin-media-library">
       <div className="admin-media-intro admin-panel">
         <div className="admin-media-upload-icon"><FiUploadCloud aria-hidden="true" /></div>
-        <div><h2>Upload foundation media</h2><p>Images, video, PDF and Word files · up to 20 MB per file. Uploaded assets are stored in Supabase Storage.</p></div>
-        <input ref={inputRef} className="sr-only" type="file" accept="image/*,video/*,application/pdf,.docx" onChange={uploadFile} aria-label="Choose a file to upload" />
-        <button className="admin-primary-button" onClick={() => inputRef.current?.click()} disabled={uploading}>{uploading ? "Uploading…" : "Choose file"}</button>
+        <div><h2>ফাউন্ডেশনের মিডিয়া আপলোড</h2><p>ছবি, ভিডিও, পিডিএফ ও ওয়ার্ড ফাইল আপলোড করুন। প্রতিটি ফাইল সর্বোচ্চ ২০ এমবি হতে পারবে।</p></div>
+        <input ref={inputRef} className="sr-only" type="file" accept="image/*,video/*,application/pdf,.docx" onChange={uploadFile} aria-label="আপলোডের জন্য ফাইল বাছাই করুন" />
+        <button className="admin-primary-button" onClick={() => inputRef.current?.click()} disabled={uploading}>{uploading ? "আপলোড হচ্ছে…" : "ফাইল বাছাই করুন"}</button>
       </div>
 
       {errorMessage && <div className="admin-inline-alert" role="alert">{errorMessage}</div>}
-      {error && <div className="admin-inline-alert" role="alert">The library could not be loaded. Check your media permissions and refresh.</div>}
+      {error && <div className="admin-inline-alert" role="alert">লাইব্রেরি লোড করা যায়নি। মিডিয়া ব্যবহারের অনুমতি যাচাই করে রিফ্রেশ করুন।</div>}
 
-      <div className="admin-media-grid" aria-label="Media assets">
-        {isLoading ? <div className="admin-panel admin-empty-state">Loading media records…</div> : data.map((asset) => {
+      <div className="admin-media-grid" aria-label="মিডিয়া ফাইলসমূহ">
+        {isLoading ? <div className="admin-panel admin-empty-state">মিডিয়া ফাইল লোড হচ্ছে…</div> : data.map((asset) => {
           const Icon = getFileIcon(asset.mime_type);
           const { data: publicUrl } = supabase.storage.from("foundation-media").getPublicUrl(asset.storage_path);
           return (
             <article className="admin-media-card admin-panel" key={asset.id}>
               <div className="admin-media-preview">
                 {asset.mime_type.startsWith("image/") ? <img src={publicUrl.publicUrl} alt={asset.alt_text || asset.file_name} loading="lazy" /> : <div className="admin-media-file-icon"><Icon aria-hidden="true" /><span>{asset.mime_type.split("/").pop()?.toUpperCase()}</span></div>}
-                <button className="admin-media-delete admin-icon-button danger" onClick={() => deleteAsset(asset)} aria-label={`Delete ${asset.file_name}`}><FiTrash2 /></button>
+                <button className="admin-media-delete admin-icon-button danger" onClick={() => deleteAsset(asset)} aria-label={`মুছে ফেলুন: ${asset.file_name}`}><FiTrash2 /></button>
               </div>
-              <div className="admin-media-card-info"><strong title={asset.file_name}>{asset.file_name}</strong><span>{formatSize(asset.file_size)} · {new Intl.DateTimeFormat(undefined, { month: "short", day: "numeric", year: "numeric" }).format(new Date(asset.created_at))}</span><button className="admin-copy-link" onClick={async () => { await navigator.clipboard.writeText(publicUrl.publicUrl); onNotice("Public media URL copied to clipboard."); }}>Copy public URL</button></div>
+              <div className="admin-media-card-info"><strong title={asset.file_name}>{asset.file_name}</strong><span>{formatSize(asset.file_size)} · {new Intl.DateTimeFormat("bn-BD", { month: "short", day: "numeric", year: "numeric" }).format(new Date(asset.created_at))}</span><button className="admin-copy-link" onClick={async () => { await navigator.clipboard.writeText(publicUrl.publicUrl); onNotice("পাবলিক মিডিয়া URL কপি করা হয়েছে।"); }}>পাবলিক URL কপি করুন</button></div>
             </article>
           );
         })}
-        {!isLoading && data.length === 0 && <div className="admin-panel admin-empty-state"><strong>No media assets yet</strong><span>Upload your first image, video, or document to use it in content.</span></div>}
+        {!isLoading && data.length === 0 && <div className="admin-panel admin-empty-state"><strong>এখনো কোনো মিডিয়া ফাইল নেই</strong><span>কনটেন্টে ব্যবহারের জন্য প্রথম ছবি, ভিডিও বা নথি আপলোড করুন।</span></div>}
       </div>
     </section>
   );

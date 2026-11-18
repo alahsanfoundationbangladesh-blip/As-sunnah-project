@@ -1,82 +1,82 @@
 export const data = [
-    {
-        id: 1,
-        "image": "https://cdn.assunnahfoundation.org/donation/zakat.jpg",
-        "heading": "Zakat Fund",
-        "desc": "Just as Zakat is one of the fundamental pillars of Islam, it is also a humanitarian act of worship. Zakat plays the most significant role in eliminating economic inequality. Your Zakat can help move the wheels of a stagnant family."
-    },
-    {
-        id: 2,
-        "image": "https://cdn.assunnahfoundation.org/media/assunnah-complex.jpg",
-        "heading": "As-Sunnah Foundation Masjid Complex",
-        "desc": "The As-Sunnah Foundation Masjid Complex will be the focal point of the multi-faceted activities of the As-Sunnah Foundation for the welfare of the country, nation and ummah. In-Sha-Allah it will be the center of various humanitarian and public welfare projects, including an ideal mosque, a modern madrasah with an integrated syllabus aimed at creating an Islamic scholar to meet the needs of the age."
-    },
-    {
-        id: 3,
-        "image": "https://cdn.assunnahfoundation.org/donation/qurbani.jpg",
-        "heading": "Qurbani Fund",
-        "desc": "Many needy people wait to taste beef/mutton only on the Eid of Qurbani every year. That is why every year the As-Sunnah Foundation organizes the distribution of meat of Qurbani under the title 'Qurbani for All'. Since Qurbani is an act of worship that can be performed through a representative, the Foundation distributes meat on behalf of the well-to-do and distributes meat among the destitute and helpless people in various poor areas of the country, including North Bengal."
-    },
-    {
-        id: 4,
-        "image": "https://cdn.assunnahfoundation.org/donation/sadaqah.jpg",
-        "heading": "Tree Plantation Fund",
-        "desc": "It is proved from various hadiths that planting trees is a good deed. As long as the planted tree is alive, all the animals and people will get flowers, fruits and shade from that tree or any benefit, it will be written in the record book of the planter as a charity. Even if the planter dies, this reward will continue to reach his record."
-    },
-    {
-        id: 5,
-        "image": "https://cdn.assunnahfoundation.org/donation/iftar.jpg",
-        "heading": "Ramadan Iftar Fund",
-        "desc": "One of the regular programs of the As-Sunnah Foundation is the distribution of Iftar and Ramadan food. The Foundation has taken initiative to distribute Iftar items among the needy fasting people in remote areas of the country so that they can observe fasting and worship without any hindrance during the month of Ramadan."
-    },
-    {
-        id: 6,
-        "image": "https://cdn.assunnahfoundation.org/donation/general.jpg",
-        "heading": "General Fund",
-        "desc": "If someone donates to a specific sector, the As-Sunnah Foundation spends it in that sector. The general fund is spent on every charitable activity of As- Sunnah Foundation. Also, the expenditure of different activities such as religious education of As -Sunnah humanitarian services and dawah activities related total initiatives is met from the general fund."
-    },
-    {
-        id: 7,
-        "image": "https://cdn.assunnahfoundation.org/donation/winter.jpg",
-        "heading": "Winter Appeal",
-        "desc": "One of the invaluable teachings of Islam is human service. Every year, the As-Sunnah Foundation organizes a 'Winter Clothing Distribution and Da'wah Program' to bring a little warmth to the helpless cold-stricken people in remote areas of Bangladesh."
-    },
-    {
-        id: 8,
-        "image": "https://cdn.assunnahfoundation.org/donation/monthly.jpg",
-        "heading": "Monthly Donation Fund",
-        "desc": "The monthly donor member of the As-Sunnah Foundation is a permanent donor of the organization. Regular donations of the monthly donor members are a means of sustainable income for the multi-faceted da'wah activities and overall development of the As-Sunnah Foundation."
-    },
-    {
-        id: 9,
-        "image": "https://cdn.assunnahfoundation.org/donation/skill-development-institute.jpeg",
-        "heading": "As-Sunnah Skill Development Institute",
-        "desc": "As-Sunnah Skill Development Institute is a subsidiary of As-Sunnah Foundation, established in 2022. It is a self development and skill development organization registered by National Skill Development Authority. Skilled manpower is created by imparting computer and technical training with special scholarships to women and men separately from this institute. Due to the increase in scope of work, a two-storey shed of about 24000 (twenty four thousand) square feet has been taken on rent in Sutivhola area of Badda, Dhaka. 400 trainees can be trained together in this shed. 7 computer labs will be established here. From here various trainings will be provided to develop technical skills, inshallah."
-    },
-    {
-        id: 10,
-        "image": "https://cdn.assunnahfoundation.org/donation/orphan.jpg",
-        "heading": "Orphan Fund",
-        "desc": "Taking care of the orphans in the hope of Allah's pleasure and reward is an important act of worship to Allah and it is also one of the best sectors of charity."
-    },
-    {
-        id: 11,
-        "image": "https://cdn.assunnahfoundation.org/donation/flood.jpg",
-        "heading": "Flood Emergency",
-        "desc": "About 26,000 sq km (18%) of Bangladesh is flooded by monsoons every year. At this time, especially in the northern part of the country, the flood-affected people are the victims of extreme misery. Every year, the As-Sunnah Foundation carries out relief activities in the flood-hit districts of the country and takes the initiative to stand by the needy and helpless people."
-    },
-    {
-        id: 12,
-        "image": "https://cdn.assunnahfoundation.org/donation/selfreliant.jpg",
-        "heading": "Self Reliant Fund",
-        "desc": "‘Swanirvar’ is a self-reliance project of As-Sunnah Foundation. The purpose of this project is to make unemployed and unskilled men and women self-reliant by providing financial assistance and necessary materials through technical training (separately) to enhance their skills."
-    },
-    {
-        id: 13,
-        "image": "https://cdn.assunnahfoundation.org/donation/sadaqah.jpg",
-        "heading": "Sadaqah Jariyah Fund",
-        "desc": "Sadaqah Jariyah is ongoing charity (continuous rewards) received by us (for good actions and deeds), that will not only benefit us in this life but will continue to benefit us after our death."
-    }
+  {
+    id: 1,
+    image: "https://cdn.assunnahfoundation.org/donation/zakat.jpg",
+    heading: "যাকাত তহবিল",
+    desc: "যাকাত ইসলামের অন্যতম ফরজ ইবাদত এবং মানবকল্যাণের গুরুত্বপূর্ণ মাধ্যম। আপনার যাকাত আর্থিকভাবে অসচ্ছল পরিবারগুলোর প্রয়োজন পূরণে সহায়তা করতে পারে।",
+  },
+  {
+    id: 2,
+    image: "https://cdn.assunnahfoundation.org/media/assunnah-complex.jpg",
+    heading: "আস-সুন্নাহ ফাউন্ডেশন মসজিদ কমপ্লেক্স",
+    desc: "মসজিদ, শিক্ষা ও মানবসেবামূলক কার্যক্রমের সমন্বিত কেন্দ্র হিসেবে আস-সুন্নাহ ফাউন্ডেশন মসজিদ কমপ্লেক্স গড়ে তোলার উদ্যোগ নেওয়া হয়েছে।",
+  },
+  {
+    id: 3,
+    image: "https://cdn.assunnahfoundation.org/donation/qurbani.jpg",
+    heading: "কুরবানি তহবিল",
+    desc: "কুরবানির মাংস বিতরণ কর্মসূচির মাধ্যমে দরিদ্র ও অসহায় মানুষের কাছে ঈদের আনন্দ পৌঁছে দিতে সহায়তা করুন।",
+  },
+  {
+    id: 4,
+    image: "https://cdn.assunnahfoundation.org/donation/sadaqah.jpg",
+    heading: "বৃক্ষরোপণ তহবিল",
+    desc: "বৃক্ষরোপণ কর্মসূচিতে সহায়তা করে সবুজ ও বাসযোগ্য পরিবেশ গড়ায় অংশ নিন।",
+  },
+  {
+    id: 5,
+    image: "https://cdn.assunnahfoundation.org/donation/iftar.jpg",
+    heading: "রমজানের ইফতার তহবিল",
+    desc: "রমজানে রোজাদার ও অসচ্ছল পরিবারের কাছে ইফতার সামগ্রী পৌঁছে দেওয়ার উদ্যোগে সহায়তা করুন।",
+  },
+  {
+    id: 6,
+    image: "https://cdn.assunnahfoundation.org/donation/general.jpg",
+    heading: "সাধারণ তহবিল",
+    desc: "সাধারণ তহবিল থেকে ফাউন্ডেশনের বিভিন্ন জনকল্যাণমূলক উদ্যোগে সহায়তা করা হয়।",
+  },
+  {
+    id: 7,
+    image: "https://cdn.assunnahfoundation.org/donation/winter.jpg",
+    heading: "শীতবস্ত্র সহায়তা",
+    desc: "শীতার্ত মানুষের কাছে উষ্ণ পোশাক পৌঁছে দেওয়ার উদ্যোগে আপনার সহায়তা যুক্ত করুন।",
+  },
+  {
+    id: 8,
+    image: "https://cdn.assunnahfoundation.org/donation/monthly.jpg",
+    heading: "মাসিক দাতা তহবিল",
+    desc: "নিয়মিত মাসিক অনুদান ফাউন্ডেশনের শিক্ষা, দাওয়াহ ও মানবকল্যাণমূলক কার্যক্রমে ধারাবাহিক সহায়তা দেয়।",
+  },
+  {
+    id: 9,
+    image: "https://cdn.assunnahfoundation.org/donation/skill-development-institute.jpeg",
+    heading: "আস-সুন্নাহ দক্ষতা উন্নয়ন ইনস্টিটিউট",
+    desc: "কম্পিউটার ও কারিগরি প্রশিক্ষণের মাধ্যমে তরুণ ও নারীদের দক্ষতা উন্নয়নের উদ্যোগে সহায়তা করুন।",
+  },
+  {
+    id: 10,
+    image: "https://cdn.assunnahfoundation.org/donation/orphan.jpg",
+    heading: "এতিম সহায়তা তহবিল",
+    desc: "এতিম শিশুদের শিক্ষা, যত্ন ও কল্যাণে সহায়তা পৌঁছে দেওয়ার উদ্যোগে অংশ নিন।",
+  },
+  {
+    id: 11,
+    image: "https://cdn.assunnahfoundation.org/donation/flood.jpg",
+    heading: "বন্যা জরুরি সহায়তা",
+    desc: "বন্যা আক্রান্ত এলাকার অসহায় মানুষের কাছে জরুরি ত্রাণ ও প্রয়োজনীয় সহায়তা পৌঁছে দিতে পাশে থাকুন।",
+  },
+  {
+    id: 12,
+    image: "https://cdn.assunnahfoundation.org/donation/selfreliant.jpg",
+    heading: "স্বাবলম্বী তহবিল",
+    desc: "প্রশিক্ষণ ও প্রয়োজনীয় উপকরণের মাধ্যমে মানুষকে স্বাবলম্বী করে তুলতে সহায়তা করুন।",
+  },
+  {
+    id: 13,
+    image: "https://cdn.assunnahfoundation.org/donation/sadaqah.jpg",
+    heading: "সাদাকাহ জারিয়াহ তহবিল",
+    desc: "দীর্ঘমেয়াদি কল্যাণমূলক উদ্যোগে আপনার অনুদান যুক্ত করে মানুষের জন্য স্থায়ী উপকারের পথ তৈরি করুন।",
+  },
 ]
 
 
