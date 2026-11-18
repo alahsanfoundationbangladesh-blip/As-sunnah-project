@@ -2,11 +2,21 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: "Noto Sans Bengali", sans-serif;
 }
 
 :root {
-  --brand-green: var(--brand-green, #368547);
+  --color-brand-primary: #145b46;
+  --color-brand-strong: #104633;
+  --color-brand-soft: #eaf3ec;
+  --color-ink: #1b3027;
+  --color-muted: #718077;
+  --color-border: #e2e9e3;
+  --color-canvas: #f4f6f2;
+  --color-surface: #ffffff;
+  --color-danger: #b64a43;
+  --color-accent-gold: #ad8243;
+  --brand-green: var(--color-brand-primary);
 }
 
 html {

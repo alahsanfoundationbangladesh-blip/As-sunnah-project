@@ -1,122 +1,56 @@
-import { useRef } from "react";
-import { IoMail, IoMenu } from "react-icons/io5";
-import { FaFacebookF, FaYoutube } from "react-icons/fa6";
-import { FaPhoneAlt } from "react-icons/fa";
+import { useState } from "react";
+import { FiMenu, FiX } from "react-icons/fi";
 import { Link } from "react-router-dom";
-import { RxCross2 } from "react-icons/rx";
 import { usePublicSiteSettings, settingText } from "../lib/site-settings";
+import "./home.css";
+
+const links = [
+  { to: "/", label: "হোম" },
+  { to: "/about", label: "আমাদের সম্পর্কে" },
+  { to: "/#activities", label: "কার্যক্রম" },
+  { to: "/news", label: "সংবাদ" },
+  { to: "/gallery", label: "ছবির গ্যালারি" },
+  { to: "/contact", label: "যোগাযোগ" },
+];
+
 export default function Topheader() {
-  const navItem = useRef(null);
+  const [menuOpen, setMenuOpen] = useState(false);
   const { data: siteSettings } = usePublicSiteSettings();
-  const logoUrl = settingText(siteSettings?.logo_url, "/images/logo.png") || "/images/logo.png";
-  const siteName = settingText(siteSettings?.site_name, "As-Sunnah Foundation");
-  const openMenu = () => {
-    navItem.current.style.left = "0";
-  };
-  const closeMenu = () => {
-    navItem.current.style.left = "-45rem";
-  };
+  const logoUrl = settingText(siteSettings?.logo_url, "");
+  const siteName = settingText(siteSettings?.site_name, "আল আহসান ফাউন্ডেশন বাংলাদেশ");
+
   return (
-    <>
-      <section className="mainTopHeader">
-        <div className="firstSec">
-          <div className="socialIcons">
-            <ul>
-              <li style={{ background: "#0165E1" }}>
-                <a href="">
-                  <FaFacebookF />
-                </a>
-              </li>
-              <li style={{ background: "#ff0000" }}>
-                <a href="">
-                  <FaYoutube />
-                </a>
-              </li>
-              <li style={{ background: "#EA4335" }}>
-                <a href="">
-                  <IoMail />
-                </a>
-              </li>
-              <li style={{ background: "#34A853" }}>
-                <a href="">
-                  <FaPhoneAlt />
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div className="secondSec">
-          <div className="logo">
-          <Link to={"/"}> <img src={logoUrl} alt={siteName} id="logoTwo" />
-              <img src={logoUrl} alt={siteName} id="logo" />
-            </Link>
-          </div>
-          <div className="topButton">
-            <button>
-              <Link style={{ color: "white", textDecoration:"none"}} to={"/login"}>
-              Account
+    <header className="site-header-bn">
+      <div className="site-header-inner">
+        <Link className="site-brand-bn" to="/" aria-label={`${siteName} — হোম`} onClick={() => setMenuOpen(false)}>
+          {logoUrl ? (
+            <img className="site-brand-logo-bn" src={logoUrl} alt="" onError={(event) => { event.currentTarget.style.display = "none"; }} />
+          ) : (
+            <span className="site-brand-mark-bn" aria-hidden="true">আ</span>
+          )}
+          <span className="site-brand-name-bn">{siteName}</span>
+        </Link>
 
-              </Link>
-            </button>
-            <button>
-              <Link style={{ color: "white", textDecoration: "none" }} to={`/donation`}>
-              Donate
+        <button
+          type="button"
+          className="site-nav-toggle-bn"
+          aria-label={menuOpen ? "মেনু বন্ধ করুন" : "মেনু খুলুন"}
+          aria-expanded={menuOpen}
+          aria-controls="public-site-navigation"
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          {menuOpen ? <FiX aria-hidden="true" /> : <FiMenu aria-hidden="true" />}
+        </button>
 
-              </Link>
-
-            </button>
-          </div>
-        </div>
-      </section>
-      <nav >
-        <div id="hiddenMenu">
-          <h1 onClick={openMenu}>
-            <IoMenu />
-          </h1>
-        </div>
-        <ul ref={navItem}>
-          <h4 onClick={closeMenu} id="hiddenCross">
-            <RxCross2 />
-          </h4>
-          <li>
-            <Link to={`/`}>Home</Link>
-          </li>
-          {/* <li>
-            <Link to={`/account`}>Profile</Link>
-          </li> */}
-          <li>
-            <Link to={`/donation`}>Donations</Link>
-          </li>
-          <li>
-            <Link to={`/`}>Donations Projects</Link>
-          </li>
-          <li>
-            <Link to={`/about`}>About</Link>
-          </li>
-          <li>
-            <Link to={`/project`}>Project</Link>
-          </li>
-          <li>
-            <Link to={`/donor`}>Donor and lifetime Me</Link>
-          </li>
-          <li>
-            <Link to={`/gallery`}>Gallery</Link>
-          </li>
-          <li>
-            <Link to={`/video`}>Videos</Link>
-          </li>
-          <li>
-            <Link to={`/volreg`}>volunteer registration</Link>
-          </li>
-          <li>
-            <Link to={`/news`}>News</Link>
-          </li>
-          <li>
-            <Link to={`/contact`}>Contact</Link>
-          </li>
-
-        </ul>
-      </nav>
-    </>
+        <nav id="public-site-navigation" className={`site-nav-bn${menuOpen ? " is-open" : ""}`} aria-label="প্রধান নেভিগেশন">
+          {links.map(({ to, label }) => (
+            <Link key={to} to={to} onClick={() => setMenuOpen(false)}>{label}</Link>
+          ))}
+          <Link className="site-nav-donate-bn" to="/donation" onClick={() => setMenuOpen(false)}>
+            {settingText(siteSettings?.home_primary_cta_label, "দান করুন")} <span aria-hidden="true">↗</span>
+          </Link>
+        </nav>
+      </div>
+    </header>
   );
 }

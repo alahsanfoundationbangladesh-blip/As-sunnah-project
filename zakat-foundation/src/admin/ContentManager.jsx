@@ -6,6 +6,8 @@ import { supabase } from "../lib/supabase";
 
 const contentTypes = ["page", "article", "news", "video"];
 const statuses = ["draft", "published", "scheduled", "archived"];
+const contentTypeLabels = { page: "পাতা", article: "প্রবন্ধ", news: "সংবাদ", video: "ভিডিও" };
+const statusLabels = { draft: "খসড়া", published: "প্রকাশিত", scheduled: "নির্ধারিত", archived: "সংরক্ষিত" };
 const emptyForm = {
   id: "",
   content_type: "article",
@@ -36,8 +38,8 @@ function slugify(value) {
 }
 
 function formatDate(value) {
-  if (!value) return "Not scheduled";
-  return new Intl.DateTimeFormat(undefined, { dateStyle: "medium" }).format(new Date(value));
+  if (!value) return "নির্ধারিত নয়";
+  return new Intl.DateTimeFormat("bn-BD", { dateStyle: "medium" }).format(new Date(value));
 }
 
 async function fetchContent(filterType) {
@@ -99,17 +101,17 @@ export default function ContentManager({ filterType, onNotice, user }) {
 
     const slug = slugify(form.slug || form.title);
     if (!slug) {
-      setFormError("Add an English URL slug so the story can have a stable public link.");
+      setFormError("পাবলিক লিংকের জন্য একটি URL slug লিখুন। শিরোনাম বাংলায় রাখা যাবে।");
       setSaving(false);
       return;
     }
     if (form.content_type === "video" && !form.video_url.trim()) {
-      setFormError("Add a YouTube, Vimeo or direct video URL before saving.");
+      setFormError("সংরক্ষণের আগে YouTube, Vimeo অথবা সরাসরি ভিডিওর লিংক দিন।");
       setSaving(false);
       return;
     }
     if (form.status === "scheduled" && !form.scheduled_at) {
-      setFormError("Choose a publication date and time for scheduled content.");
+      setFormError("নির্ধারিত কনটেন্টের জন্য প্রকাশের তারিখ ও সময় বেছে নিন।");
       setSaving(false);
       return;
     }
@@ -142,7 +144,7 @@ export default function ContentManager({ filterType, onNotice, user }) {
     const { error: saveError } = await request;
 
     if (saveError) {
-      setFormError(saveError.code === "23505" ? "That URL slug is already in use. Choose a different one." : "The database could not save this item. Check your access and try again.");
+      setFormError(saveError.code === "23505" ? "এই URL slug-টি ব্যবহৃত হচ্ছে। অন্য একটি slug দিন।" : "ডেটাবেসে এই কনটেন্ট সংরক্ষণ করা যায়নি। অনুমতি যাচাই করে আবার চেষ্টা করুন।");
       setSaving(false);
       return;
     }
@@ -155,7 +157,7 @@ export default function ContentManager({ filterType, onNotice, user }) {
     await mutate((key) => Array.isArray(key) && ["public-site-content", "public-content-detail", "public-news-detail"].includes(key[0]));
     setSaving(false);
     setEditorOpen(false);
-    onNotice(form.id ? "Content updated and saved to the website." : "Content created in the website database.");
+    onNotice(form.id ? "কনটেন্ট হালনাগাদ করে ওয়েবসাইটে সংরক্ষণ করা হয়েছে।" : "নতুন কনটেন্ট ওয়েবসাইটের ডেটাবেসে তৈরি হয়েছে।");
   };
 
   const updateStatus = async (item, status) => {
@@ -166,55 +168,55 @@ export default function ContentManager({ filterType, onNotice, user }) {
     };
     const { error: updateError } = await supabase.from("site_content").update(update).eq("id", item.id);
     if (updateError) {
-      onNotice("The status change was denied or could not be saved.");
+      onNotice("অবস্থার পরিবর্তন অনুমোদিত হয়নি বা সংরক্ষণ করা যায়নি।");
       return;
     }
     await mutate(cacheKey);
     await mutate(["admin-overview"]);
     await mutate((key) => Array.isArray(key) && ["public-site-content", "public-content-detail", "public-news-detail"].includes(key[0]));
-    onNotice(status === "published" ? "Published. It is now visible on the public site." : "Unpublished. It is no longer visible publicly.");
+    onNotice(status === "published" ? "কনটেন্ট প্রকাশিত হয়েছে এবং এখন ওয়েবসাইটে দেখা যাবে।" : "কনটেন্ট অপ্রকাশিত করা হয়েছে। এটি আর ওয়েবসাইটে দেখা যাবে না।");
   };
 
   const deleteItem = async (item) => {
-    if (!window.confirm(`Delete “${item.title}” permanently? This cannot be undone.`)) return;
+    if (!window.confirm(`“${item.title}” স্থায়ীভাবে মুছে ফেলবেন? এই কাজটি ফিরিয়ে নেওয়া যাবে না.`)) return;
     const { error: deleteError } = await supabase.from("site_content").delete().eq("id", item.id);
     if (deleteError) {
-      onNotice("This item could not be deleted. Check your access and try again.");
+      onNotice("এই কনটেন্ট মুছে ফেলা যায়নি। অনুমতি যাচাই করে আবার চেষ্টা করুন।");
       return;
     }
     await mutate(cacheKey);
     await mutate(["admin-overview"]);
     await mutate((key) => Array.isArray(key) && ["public-site-content", "public-content-detail", "public-news-detail"].includes(key[0]));
-    onNotice("Content deleted from the website database.");
+    onNotice("ওয়েবসাইটের ডেটাবেস থেকে কনটেন্ট মুছে ফেলা হয়েছে।");
   };
 
-  const heading = filterType === "news" ? "News" : filterType === "video" ? "Videos" : "Pages and articles";
+  const heading = filterType === "news" ? "সংবাদ" : filterType === "video" ? "ভিডিও" : "পাতা ও প্রবন্ধ";
 
   return (
     <section className="admin-content-manager">
       <div className="admin-toolbar">
-        <div className="admin-search-box"><FiSearch aria-hidden="true" /><input type="search" value={query} onChange={(event) => setQuery(event.target.value)} aria-label={`Search ${heading.toLowerCase()}`} placeholder={`Search ${heading.toLowerCase()}…`} /></div>
-        <button className="admin-primary-button" onClick={startCreate}><FiPlus aria-hidden="true" /> New {filterType === "news" ? "news" : filterType === "video" ? "video" : "content"}</button>
+        <div className="admin-search-box"><FiSearch aria-hidden="true" /><input type="search" value={query} onChange={(event) => setQuery(event.target.value)} aria-label={`${heading} খুঁজুন`} placeholder={`${heading} খুঁজুন…`} /></div>
+        <button className="admin-primary-button" onClick={startCreate}><FiPlus aria-hidden="true" /> নতুন {filterType === "news" ? "সংবাদ" : filterType === "video" ? "ভিডিও" : "কনটেন্ট"}</button>
       </div>
 
       <div className="admin-panel admin-table-panel">
-        <div className="admin-table-heading"><div><h2>{heading}</h2><p>Changes are saved to the live website database.</p></div><span className="admin-record-count">{data.length} records</span></div>
-        {error && <div className="admin-inline-alert" role="alert">Content could not be loaded. Check the signed-in account permissions and refresh.</div>}
-        {isLoading ? <div className="admin-empty-state">Loading database records…</div> : filteredRows.length === 0 ? (
-          <div className="admin-empty-state"><strong>{query ? "No matching content" : "No content in this section yet"}</strong><span>Create an item to publish it on the website.</span></div>
+        <div className="admin-table-heading"><div><h2>{heading}</h2><p>পরিবর্তন সরাসরি ওয়েবসাইটের ডেটাবেসে সংরক্ষিত হয়।</p></div><span className="admin-record-count">{new Intl.NumberFormat("bn-BD").format(data.length)}টি</span></div>
+        {error && <div className="admin-inline-alert" role="alert">কনটেন্ট লোড করা যায়নি। সাইন-ইন করা অ্যাকাউন্টের অনুমতি যাচাই করে রিফ্রেশ করুন।</div>}
+        {isLoading ? <div className="admin-empty-state">ডেটাবেসের কনটেন্ট লোড হচ্ছে…</div> : filteredRows.length === 0 ? (
+          <div className="admin-empty-state"><strong>{query ? "কোনো কনটেন্ট মেলেনি" : "এই বিভাগে এখনো কনটেন্ট নেই"}</strong><span>ওয়েবসাইটে প্রকাশের জন্য একটি কনটেন্ট তৈরি করুন।</span></div>
         ) : (
-          <div className="admin-table-scroll"><table className="admin-table"><thead><tr><th>Title</th><th>Type</th><th>Status</th><th>Last updated</th><th><span className="sr-only">Actions</span></th></tr></thead>
+          <div className="admin-table-scroll"><table className="admin-table"><thead><tr><th>শিরোনাম</th><th>ধরন</th><th>অবস্থা</th><th>সর্বশেষ পরিবর্তন</th><th><span className="sr-only">কাজ</span></th></tr></thead>
             <tbody>{filteredRows.map((item) => (
               <tr key={item.id}>
                 <td><div className="admin-content-title-cell">{item.image_url && <img src={item.image_url} alt="" />}<div><strong>{item.title}</strong><small>/{item.slug}</small></div></div></td>
-                <td><span className="admin-type-pill">{item.content_type}</span>{item.is_breaking && <span className="admin-breaking-pill">Breaking</span>}</td>
-                <td><span className={`admin-status-pill status-${item.status}`}>{item.status}</span>{item.status === "scheduled" && <small className="admin-table-subtext">{formatDate(item.scheduled_at)}</small>}</td>
+                <td><span className="admin-type-pill">{contentTypeLabels[item.content_type] ?? "কনটেন্ট"}</span>{item.is_breaking && <span className="admin-breaking-pill">জরুরি সংবাদ</span>}</td>
+                <td><span className={`admin-status-pill status-${item.status}`}>{statusLabels[item.status] ?? "অজানা"}</span>{item.status === "scheduled" && <small className="admin-table-subtext">{formatDate(item.scheduled_at)}</small>}</td>
                 <td className="admin-muted-cell">{formatDate(item.updated_at)}</td>
                 <td><div className="admin-row-actions">
-                  {item.status !== "published" && <button className="admin-small-action publish" onClick={() => updateStatus(item, "published")}>Publish</button>}
-                  {item.status === "published" && <button className="admin-small-action" onClick={() => updateStatus(item, "draft")}>Unpublish</button>}
-                  <button className="admin-icon-button" onClick={() => startEdit(item)} aria-label={`Edit ${item.title}`}><FiEdit2 /></button>
-                  <button className="admin-icon-button danger" onClick={() => deleteItem(item)} aria-label={`Delete ${item.title}`}><FiTrash2 /></button>
+                  {item.status !== "published" && <button className="admin-small-action publish" onClick={() => updateStatus(item, "published")}>প্রকাশ</button>}
+                  {item.status === "published" && <button className="admin-small-action" onClick={() => updateStatus(item, "draft")}>অপ্রকাশিত করুন</button>}
+                  <button className="admin-icon-button" onClick={() => startEdit(item)} aria-label={`সম্পাদনা করুন: ${item.title}`}><FiEdit2 /></button>
+                  <button className="admin-icon-button danger" onClick={() => deleteItem(item)} aria-label={`মুছে ফেলুন: ${item.title}`}><FiTrash2 /></button>
                 </div></td>
               </tr>
             ))}</tbody>
@@ -225,7 +227,7 @@ export default function ContentManager({ filterType, onNotice, user }) {
       {editorOpen && (
         <div className="admin-modal-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setEditorOpen(false); }}>
           <section className="admin-editor-modal" role="dialog" aria-modal="true" aria-labelledby="admin-editor-title">
-            <header className="admin-editor-header"><div><p className="admin-eyebrow">{form.id ? "EDIT RECORD" : "NEW RECORD"}</p><h2 id="admin-editor-title">{form.id ? "Edit content" : "Create content"}</h2></div><button className="admin-icon-button" onClick={() => setEditorOpen(false)} aria-label="Close editor"><FiX /></button></header>
+            <header className="admin-editor-header"><div><p className="admin-eyebrow">{form.id ? "রেকর্ড সম্পাদনা" : "নতুন রেকর্ড"}</p><h2 id="admin-editor-title">{form.id ? "কনটেন্ট সম্পাদনা" : "কনটেন্ট তৈরি"}</h2></div><button className="admin-icon-button" onClick={() => setEditorOpen(false)} aria-label="Close editor"><FiX /></button></header>
             <form className="admin-editor-form" onSubmit={saveContent}>
               <div className="admin-editor-grid">
                 <Field label="Content type"><select name="content_type" value={form.content_type} onChange={change} disabled={Boolean(form.id)}>{contentTypes.map((type) => <option key={type} value={type}>{type[0].toUpperCase() + type.slice(1)}</option>)}</select></Field>

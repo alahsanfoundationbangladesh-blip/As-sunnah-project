@@ -13,9 +13,9 @@ export default function News() {
     <>
       <Topheader />
       <main className="mainNewsContainer">
-        <h1>News</h1>
-        {error && <p role="alert">News could not be loaded right now. Please try again later.</p>}
-        {isLoading ? <p role="status">Loading published news…</p> : (
+        <h1>সংবাদ ও আপডেট</h1>
+        {error && <p role="alert">এই মুহূর্তে সংবাদ লোড করা যাচ্ছে না। অনুগ্রহ করে পরে আবার চেষ্টা করুন।</p>}
+        {isLoading ? <p role="status">প্রকাশিত সংবাদ লোড হচ্ছে…</p> : (
           <div className="newsContainer">
             {news.map((item) => (
               <Link key={item.id} to={`/singlenews?slug=${encodeURIComponent(item.slug)}`}>
@@ -26,7 +26,7 @@ export default function News() {
                 </article>
               </Link>
             ))}
-            {!error && news.length === 0 && <p>No news articles have been published yet.</p>}
+            {!error && news.length === 0 && <p>এখনো কোনো সংবাদ প্রকাশ করা হয়নি।</p>}
           </div>
         )}
       </main>
